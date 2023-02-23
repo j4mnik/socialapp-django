@@ -1,0 +1,125 @@
+@import url("base_social.css");
+
+.home {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+}
+
+.post-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    margin-bottom: 2rem;
+}
+
+.post-card > div {
+    display: flex;
+    margin-inline: 1rem 1rem;
+}
+
+.post-card-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+#post-pub-date {
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+}
+
+
+.author-post-sect {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.post-author-picture {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 100%;
+    margin-right: 0.5rem;
+}
+
+.post-author {
+    font-size: large;
+    font-weight: 500;
+    color: #374151;
+}
+
+#post-title {
+    font-weight: 500;
+    color: #374151;
+}
+
+.post-text {
+    margin-top: 1rem;
+    color: #374151;
+}
+
+.post-img {
+    align-self: center;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+    max-width: 100%;
+    max-height: 26rem;
+}
+
+.post-card-amount {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2563eb;
+    margin: 0 0 0 0;
+}
+
+.post-card-amount * {
+    margin: 0 0 0.5rem 0;
+}
+
+.post-text {
+    margin-top: 0;
+    color: #374151;
+}
+
+.post-img {
+    align-self: center;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+    max-width: 100%;
+    max-height: 26rem;
+}
+
+.post-card > div {
+    display: flex;
+    margin-inline: 1rem 1rem;
+}
+
+.post-card-btn-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: inherit;
+    margin-top: 0.5rem;
+}
+
+.show-details-btn {
+    border: none;
+    color: #3b82f6;
+    background-color: #bfdbfe;
+    font-weight: 600;
+    font-size: medium;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: 8px;
+    width: 100%;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}

@@ -1,0 +1,67 @@
+@import url("../base.css");
+
+#signup-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0;
+
+}
+
+#signup-input {
+    display: flex;
+    flex-direction: row;
+    justify-items: left;
+    align-content: center;
+    align-items: center;
+    margin-inline: 0 0;
+}
+
+#signup-input * {
+    margin: 0.5rem 1rem 0.5rem 0;
+}
+
+#signup-btn {
+    background-color: #2575fc;
+    color: #ffffff;
+    width: max-content;
+}
+
+#signup-input > input {
+    border: 0;
+    border-radius: 8px;
+    font-size: medium;
+    padding: 0.5rem;
+    width: 50%;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+
+#signup-input > select {
+    border: 0;
+    border-radius: 8px;
+    font-size: medium;
+    padding: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+
+#signup-btn {
+    background-color: #2575fc;
+    color: #ffffff;
+}
+
+#already-account {
+    margin: 1rem 0 0 0;
+}
+
+#already-account > a {
+    font-weight: 500;
+    text-decoration: none;
+    color: #396afc;
+    margin: 0 0 0 5px;
+}
+
+#signup-about {
+    color: white;
+    text-align: center;
+    background-image: linear-gradient(to right, #0052D4 0%, #6FB1FC 100%);
+}

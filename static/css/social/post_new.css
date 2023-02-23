@@ -1,0 +1,18 @@
+@import url("base_social.css");
+
+.new_post {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+}
+
+.add-post-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    height: 1.25rem;
+    margin-bottom: 1rem;
+}

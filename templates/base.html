@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Social app{% endblock %}</title>
+    <meta name="viewport" content="width=device-width,
+initial-scale=1, shrink-to-fit=no">
+    {% block extra_style %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    {% endblock %}
+</head>
+<body>
+<div>
+    {% if user.is_authenticated %}
+        <div class="topbar">
+            <h3><a id="site-title" href={% url 'home' %}>Social app</a></h3>
+            <div class="top-bar-account">
+                <p class="top-bar-username">{{ user.username }}</p>
+                <img class="post-author-picture"
+                     src="{% static user.profile_picture %}">
+            </div>
+        </div>
+    {% endif %}
+
+    {% block content %}
+    {% endblock content %}
+
+    {% if user.is_authenticated %}
+
+        <div class="navbar">
+            <p><a href="{% url 'home' %}">Feed</a></p>
+            <p><a href="{% url 'post_new' %}">New</a></p>
+            <p>Profile</p>
+        </div>
+
+    {% endif %}
+</div>
+</body>
+</html>

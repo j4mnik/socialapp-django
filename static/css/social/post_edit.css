@@ -1,0 +1,17 @@
+@import url("base_social.css");
+
+.edit-page {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+}
+
+.edit-post-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-post-card > input {
+    padding: 1rem;
+}

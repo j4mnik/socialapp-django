@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Add new post{% endblock %}
+
+{% block extra_style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/social/post_new.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="new_post">
+        <div class="section">
+            <div class="section-title">
+                <h1>Add new post</h1>
+            </div>
+            <div>
+                <form class="add-post-form" id="" method="post" action="#">
+                    {% csrf_token %}
+                    {{ form.title }}
+                    {{ form.text }}
+                    <div class="add_image">
+                        {{ form.picture }}
+                    </div>
+                    <button type="submit" class="primary_btn" id="publish_btn" value="save">Publish</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

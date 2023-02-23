@@ -1,0 +1,168 @@
+@import url("base_social.css");
+
+.post_detail {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+}
+
+.post-edit-section {
+    display: flex;
+    justify-content: flex-end;
+    font-size: small;
+    color: #2563eb;
+}
+
+.post-edit-section * {
+    margin-left: 0.2rem;
+}
+
+.post-card-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.author-post-sect {
+    display: flex;
+    flex-direction: row;
+}
+
+.post-author {
+    font-size: large;
+    font-weight: 500;
+    color: #374151;
+}
+
+
+.post-author-picture {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 100%;
+    margin-right: 0.5rem;
+
+}
+
+#post-pub-date {
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+}
+
+#post-title {
+    font-weight: 500;
+    color: #374151;
+}
+
+.post-card-amount {
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2563eb;
+    background-color: #ffffff;
+
+}
+
+.post-card-detail {
+    margin: 0.5rem 0.5rem 0 0.5rem;
+    background-color: #ffffff;
+    flex-direction: column;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+
+.post-card-detail * {
+    margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+.post-text {
+    margin-top: 1rem;
+    color: #374151;
+}
+
+.post-img {
+    align-self: center;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+    max-width: 100%;
+    max-height: 26rem;
+}
+
+.post-card > div {
+    display: flex;
+    margin-inline: 1rem 1rem;
+}
+
+
+.like-btn-section {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.like-btn-section > button {
+    width: 5rem;
+}
+
+#like-detail-btn {
+    display: flex;
+    width: 10rem;
+}
+
+.add-comment-section {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.add-comment-section > label {
+    display: none;
+}
+
+.add-comment-section > textarea {
+    height: 2rem;
+    margin-bottom: 1rem;
+}
+
+.add-comment-section > button {
+    border: none;
+    color: #3b82f6;
+    background-color: #bfdbfe;
+    font-weight: 600;
+    font-size: medium;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: 8px;
+    width: 100%;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.comment-author-section {
+    display: flex;
+    flex-direction: row;
+}
+
+.comment-author-section > p {
+    margin: 0 0 0 0.5rem;
+    vertical-align: baseline;
+}
+
+.comment {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.comment-content {
+    word-wrap: break-word;
+}
+

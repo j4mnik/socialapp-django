@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+{% block extra_style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/registration/login.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="column">
+            <div>
+                <h1 id="login-title">Log in</h1>
+                <h3 id="login-subtitle">Welcome back! Please enter your credentials.</h3>
+                <div id="login-input">
+                    <form method="post">{% csrf_token %}
+                        {% if wrong_credentials %}
+                            <h4 id="login-incorrect-text">Incorrect username or password</h4>
+                        {% endif %}
+                        <label class="login-label">
+                            <input name="username" type="text" placeholder="Username"/>
+                            {{ login_form.username.errors.as_text }}
+                        </label>
+                        <label class="login-label">
+                            <input name="password" type="password" placeholder="Password"/>
+                            {{ login_form.password.errors.as_text }}
+                        </label>
+                        <div id="login-btn-section">
+                            <button id="login-btn" type="submit">
+                                Login
+                            </button>
+                        </div>
+                    </form>
+                    <p id="signup-label">Don't have an account? <a href={% url 'signup' %}>Sign up</a></p>
+                </div>
+
+            </div>
+        </div>
+        <div class="column" id="login-about">
+            <h1>It's a social app. <br> Built in Django web framework.</h1>
+        </div>
+    </div>
+
+{% endblock content %}

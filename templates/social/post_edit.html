@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Social app{% endblock %}
+
+{% block extra_style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/social/post_edit.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="edit-page">
+        <div class="section">
+            <div class="section-title">
+                <h1>Edit your post</h1>
+            </div>
+            <div>
+               <form class="edit-post-card" action="" method="post">{% csrf_token %}
+                {{ form.title }}
+                {{ form.text }}
+                {{ form.image }}
+                <input type="submit" value="Update">
+            </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

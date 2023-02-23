@@ -1,0 +1,77 @@
+@import url("../base.css");
+
+
+#login-title {
+    margin-bottom: 0;
+}
+
+#login-subtitle {
+    font-weight: 500;
+    color: #343a40;
+}
+
+#login-incorrect-text {
+    font-weight: 500;
+    color: red;
+}
+
+.login-label > input {
+    border: 0;
+    border-radius: 8px;
+    font-size: medium;
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+
+#login-input * {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 1rem 0;
+}
+
+#login-btn-section {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    align-items: end;
+
+}
+
+#login-btn-section * {
+    margin: 0 1rem 0 0;
+    justify-content: center;
+    justify-items: center;
+}
+
+#login-btn {
+    background-color: #2575fc;
+    color: #ffffff;
+    width: max-content;
+}
+
+#signup-label {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2rem;
+}
+
+#signup-label a {
+    margin-left: 5px;
+    color: #2667ff;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+#login-about {
+    color: white;
+    text-align: center;
+    background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+}
+
+@media only screen and (max-width: 600px) {
+    #login-about {
+        display: flex;
+        flex-direction: column;
+        height: 0;
+    }
+}

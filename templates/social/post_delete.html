@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Delete post{% endblock %}
+
+{% block extra_style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/social/post_delete.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="delete-post-page">
+        <div class="section">
+            <div class="section-title">
+                <h1>Delete your post</h1>
+            </div>
+            <div>
+                <form class="delete-post-card"  action="" method="post">{% csrf_token %}
+                    <p>Are you sure you want to delete "{{ post.title }}"?</p>
+                    <input type="submit" value="Confirm">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

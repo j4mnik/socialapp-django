@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Sign up{% endblock %}
+
+{% block extra_style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/registration/signup.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="column">
+        <div>
+            <h1>Create an account</h1>
+            <div id="signup-input">
+                <form method="post">
+                    {% csrf_token %}
+                    {% for field in sign_up_form %}
+                        <div id="signup-input">
+                            {{ field.label_tag }} {{ field }}
+                        </div>
+                        <div id="signup-errors">
+                            {{ field.errors.as_text }}
+                        </div>
+                    {% endfor %}
+                    <button type="submit" id="signup-btn">Sign up</button>
+                </form>
+            </div>
+            <p id="already-account">Already have an account? <a href={% url 'login' %}>Sign in</a></p>
+        </div>
+        </div>
+        <div class="column" id="signup-about">
+            <h1>Start using this community!</h1>
+        </div>
+    </div>
+
+{% endblock content %}

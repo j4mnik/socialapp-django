@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-e&!x@qp=&20cpb5$fo$la^kk&gd5@v-n^e^ng17cp-5yc$-_u&'
+SECRET_KEY = 'django-insecure-j7lo^kpu9gjb@!m!=%($yq^*j==ea14b^2&9)_2)_i)axkd56-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -56,7 +56,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -65,6 +65,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries': {
+                'add_class': 'accounts.forms',
+            }
         },
     },
 ]
@@ -85,6 +88,12 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
+
+AUTH_USER_MODEL = 'accounts.User'
+
+LOGIN_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL = "home"
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -117,9 +126,22 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+STATIC_DIR = BASE_DIR / "static"
+DEFAULT_AVATAR_DIR = STATIC_DIR / "profile_pictures" / "default_avatar.png"
+IMAGES_DIR = STATIC_DIR / "profile_pictures"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_URL = 'media/'
+STATICFILES_DIRS = [
+    STATIC_DIR,
+]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

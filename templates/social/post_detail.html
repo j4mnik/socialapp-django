@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Social app{% endblock %}
+
+{% block extra_style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/social/post_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="post_detail">
+        <div class="section">
+            <div class="section-title">
+                <h1>{{ post.author.username }} post</h1>
+            </div>
+            <div class="post-card-detail">
+                {% if post.author == user %}
+                    <div class="post-edit-section">
+                        <p><a href="{% url 'post_edit' post.pk %}">Edit Post</a></p>
+                        <p><a href="{% url 'post_delete' post.pk %}">Delete Post</a></p>
+                    </div>
+                {% endif %}
+                <div class="post-card-info">
+                    <div class="author-post-sect">
+                        <img class="post-author-picture"
+                             src="{% static post.author.profile_picture %}">
+                        <p class="post-author">{{ post.author.username }}</p>
+                    </div>
+                    <div>
+                        <p id="post-pub-date">{{ post.date_updated }}</p>
+                    </div>
+                </div>
+                <div>
+                    <p id="post-title">{{ post.title }}</p>
+                </div>
+                <div>
+                    <p class="post-text">{{ post.text }}</p>
+                    {% if post.picture %}
+                        <img class="post_img" src="{{ post.picture }}" alt="image">
+                    {% endif %}
+                </div>
+                <div class="post-card-amount">
+                    <p>{{ post.liked_by.count }} Likes</p>
+                </div>
+            </div>
+            <div>
+                <form class="like-btn-section" method="post" action="{% url 'post_like' object.pk %}">
+                    {% csrf_token %}
+                    <button type="submit" class="primary-button">Like</button>
+                </form>
+            </div>
+            <div class="comment-section">
+                <h2>Comments: {{ post.comments.count }}</h2>
+                <div class="add-comment-section">
+                    <p>Add a comment</p>
+                    <form class="add-comment-section" method="post">
+                        {% csrf_token %}
+                        {{ form }}
+                        <button type="submit">Add comment</button>
+                    </form>
+                </div>
+                {% for comment in post.comments.all %}
+                    <div class="comment">
+                        <div class="comment-author-section">
+                            <img src={{ comment.author.profile_picture.url }}/>
+                            <p>{{ comment.author }}</p>
+                        </div>
+                        <p>{{ comment.date_posted }}</p>
+                        <p class="comment-content">{{ comment.content }}</p>
+                    </div>
+                {% empty %}
+                    <p>No comments yet.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

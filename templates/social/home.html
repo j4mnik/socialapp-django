@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Social app{% endblock %}
+
+{% block extra_style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/social/home.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="home">
+        <div class="section">
+            <div class="section-title">
+                <h1>It's your feed</h1>
+            </div>
+            <div>
+                {% for post in post_list %}
+                    <div class="post-card">
+                        <div class="post-card-info">
+                            <div class="author-post-sect">
+                                <img class="post-author-picture"
+                                     src="{% static post.author.profile_picture %}">
+                                <p class="post-author">{{ post.author.username }}</p>
+                            </div>
+                            <div>
+                                <p id="post-pub-date">{{ post.date_updated }}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <p id="post-title">{{ post.title }}</p>
+                        </div>
+                        <div>
+                            <p class="post-text">{{ post.text }}</p>
+                            {% if post.picture %}
+                                <img class="post_img" src="{{ post.picture }}" alt="image">
+                            {% endif %}
+                        </div>
+                        <div class="post-card-amount">
+                            <p>{{ post.liked_by.count }} Likes</p>
+                            <p>{{ post.comments.count }} Comments</p>
+                        </div>
+                        <div class="post-card-btn-section">
+                            <button type="button" class="show-details-btn"
+                                    onclick="window.location='{% url 'post_detail' post.pk %}'">Show details
+                            </button>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

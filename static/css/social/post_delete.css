@@ -1,0 +1,13 @@
+@import url("base_social.css");
+
+.delete-post-page {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+}
+
+.delete-post-card > input {
+    padding: 0.5rem;
+}
+
