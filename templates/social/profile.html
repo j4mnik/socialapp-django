@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}{{ user.username }} profile{% endblock %}
+
+{% block extra_style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/social/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="profile">
+        <div class="section-title" id="username-section">
+            <h1 class="profile-username-heading">{{ user.username }}</h1>
+            <div class="follow-profile-section">
+                <p>{{ user.followers.count }} Followers</p>
+                <p>{{ user.following.count }} Following</p>
+            </div>
+            <div>
+                {% if request.user.is_authenticated %}
+                    {% if is_following %}
+                        <form method="post" action="{% url 'unfollow' user.pk %}">
+                            {% csrf_token %}
+                            <button type="submit" class="follow-button">Unfollow</button>
+                        </form>
+                    {% else %}
+                        <form method="post" action="{% url 'follow' user.pk %}">
+                            {% csrf_token %}
+                            <button type="submit" class="follow-button">Follow</button>
+                        </form>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="section">
+            <div>
+                <h2>Personal info</h2>
+                <p>First name: {{ user.first_name }}</p>
+                <p>Last name: {{ user.last_name }}</p>
+                <p>Email: {{ user.email }}</p>
+                <p>Gender: {{ user.gender }}</p>
+            </div>
+            <div>
+                <h2>Followers:</h2>
+                {% if object.followers.all %}
+                    <ul>
+                        {% for follower in object.followers.all %}
+                            <li>{{ follower.follower_user.username }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No followers yet.</p>
+                {% endif %}
+
+                <h2>Following:</h2>
+                {% if object.following.all %}
+                    <ul>
+                        {% for followed_user in following %}
+                            <li>{{ followed_user.followed_user }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>Not following anyone yet.</p>
+                {% endif %}
+            </div>
+            <div>
+                <h2>{{ user.username }}'s posts</h2>
+                {% if posts.all %}
+                    {% for post in posts %}
+                        <div class="post-card">
+                            <div class="post-card-info">
+                                <div class="author-post-sect">
+                                    <img class="post-author-picture"
+                                         src="{% static post.author.profile_picture %}">
+                                    <p class="post-author"><a
+                                            href="/profile/{{ post.author.id }}/">{{ post.author.username }}</a></p>
+                                </div>
+                                <div>
+                                    <p id="post-pub-date">{{ post.date_updated }}</p>
+                                </div>
+                            </div>
+                            <div>
+                                <p id="post-title">{{ post.title }}</p>
+                            </div>
+                            <div>
+                                <p class="post-text">{{ post.text }}</p>
+                                {% if post.picture %}
+                                    <img class="post_img" src="{{ post.picture }}" alt="image">
+                                {% endif %}
+                            </div>
+                            <div class="post-card-amount">
+                                <p>{{ post.liked_by.count }} Likes</p>
+                                <p>{{ post.comments.count }} Comments</p>
+                            </div>
+                            <div class="post-card-btn-section">
+                                <button type="button" class="show-details-btn"
+                                        onclick="window.location='{% url 'post_detail' post.pk %}'">Show details
+                                </button>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No posts.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

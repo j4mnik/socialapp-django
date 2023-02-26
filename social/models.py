@@ -24,3 +24,12 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"{self.author} - {self.post.title}"
+
+
+class Follower(models.Model):
+    follower_user = models.ForeignKey("accounts.User", on_delete=models.CASCADE, related_name='following')
+    followed_user = models.ForeignKey("accounts.User", on_delete=models.CASCADE, related_name='followers')
+    followed_date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('follower_user', 'followed_user')

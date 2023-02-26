@@ -14,6 +14,9 @@
             <div class="section-title">
                 <h1>It's your feed</h1>
             </div>
+            <div class="find-friends-section">
+                <p><a href="{% url 'find_friends' %}">Find friends</a></p>
+            </div>
             <div>
                 {% for post in post_list %}
                     <div class="post-card">
@@ -21,7 +24,7 @@
                             <div class="author-post-sect">
                                 <img class="post-author-picture"
                                      src="{% static post.author.profile_picture %}">
-                                <p class="post-author">{{ post.author.username }}</p>
+                                <p class="post-author"><a href="/profile/{{ post.author.id }}/">{{ post.author.username }}</a></p>
                             </div>
                             <div>
                                 <p id="post-pub-date">{{ post.date_updated }}</p>

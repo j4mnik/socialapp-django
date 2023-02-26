@@ -1,5 +1,5 @@
 from django.contrib import admin
-from social.models import Post, Comment
+from social.models import Post, Comment, Follower
 
 
 # Register your models here.
@@ -23,3 +23,4 @@ class PostAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Post, PostAdmin)
+admin.site.register(Follower)

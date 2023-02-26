@@ -1,0 +1,19 @@
+@import url("base_social.css");
+
+.find-friends {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+}
+
+.user {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px #d1d5db solid;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    color: #374151;
+    font-weight: 500;
+}

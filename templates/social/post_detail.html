@@ -25,7 +25,8 @@
                     <div class="author-post-sect">
                         <img class="post-author-picture"
                              src="{% static post.author.profile_picture %}">
-                        <p class="post-author">{{ post.author.username }}</p>
+                        <p class="post-author"><a href="/profile/{{ post.author.id }}/">{{ post.author.username }}</a>
+                        </p>
                     </div>
                     <div>
                         <p id="post-pub-date">{{ post.date_updated }}</p>
@@ -45,10 +46,19 @@
                 </div>
             </div>
             <div>
-                <form class="like-btn-section" method="post" action="{% url 'post_like' object.pk %}">
-                    {% csrf_token %}
-                    <button type="submit" class="primary-button">Like</button>
-                </form>
+                {% if user.is_authenticated %}
+                    {% if liked %}
+                        <form action="{% url 'post_unlike' post.pk %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Unlike</button>
+                        </form>
+                    {% else %}
+                        <form action="{% url 'post_like' post.pk %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Like</button>
+                        </form>
+                    {% endif %}
+                {% endif %}
             </div>
             <div class="comment-section">
                 <h2>Comments: {{ post.comments.count }}</h2>

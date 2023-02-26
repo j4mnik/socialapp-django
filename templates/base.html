@@ -17,9 +17,9 @@ initial-scale=1, shrink-to-fit=no">
         <div class="topbar">
             <h3><a id="site-title" href={% url 'home' %}>Social app</a></h3>
             <div class="top-bar-account">
-                <p class="top-bar-username">{{ user.username }}</p>
+                <p class="top-bar-username"><a href="{% url 'profile' pk=user.id %}">{{ request.user.username }}</a></p>
                 <img class="post-author-picture"
-                     src="{% static user.profile_picture %}">
+                     src="{% static request.user.profile_picture %}">
             </div>
         </div>
     {% endif %}
@@ -32,7 +32,7 @@ initial-scale=1, shrink-to-fit=no">
         <div class="navbar">
             <p><a href="{% url 'home' %}">Feed</a></p>
             <p><a href="{% url 'post_new' %}">New</a></p>
-            <p>Profile</p>
+            <p><a href="{% url 'profile' pk=user.id %}">Profile</a></p>
         </div>
 
     {% endif %}

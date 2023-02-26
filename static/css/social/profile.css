@@ -1,27 +1,40 @@
 @import url("base_social.css");
 
-.home {
+.profile {
     display: flex;
     flex-direction: column;
     margin: 0;
     width: 100%;
 }
 
-
-.find-friends-section {
+#username-section {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    width: fit-content;
-    color: #3b82f6;
-    background-color: #bfdbfe;
-    font-weight: 900;
-    padding: 1rem;
-    margin-bottom: 2rem;
-    border-radius: 18px;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+
 }
 
-.find-friends-section * {
-    margin: 0;
+.profile-username-heading {
+    margin-inline: 1rem;
+    font-size: xxx-large;
+}
+
+.follow-profile-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.follow-profile-section * {
+    margin-inline: 1rem;
 }
 
 .post-card {
@@ -134,4 +147,8 @@
     width: 100%;
     margin-bottom: 1rem;
     cursor: pointer;
+}
+
+.follow-button {
+    background-color: rgba(255, 255, 255,  .3)
 }
