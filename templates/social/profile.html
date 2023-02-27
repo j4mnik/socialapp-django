@@ -13,8 +13,8 @@
         <div class="section-title" id="username-section">
             <h1 class="profile-username-heading">{{ user.username }}</h1>
             <div class="follow-profile-section">
-                <p>{{ user.followers.count }} Followers</p>
-                <p>{{ user.following.count }} Following</p>
+                <p><a href="{% url 'followers' user.id %}">{{ user.followers.count }} Followers</a></p>
+                <p><a href="{% url 'followed_users' user.id %}">{{ user.following.count }} Following</a></p>
             </div>
             <div>
                 {% if request.user.is_authenticated %}
@@ -34,34 +34,12 @@
         </div>
         <div class="section">
             <div>
+                   <img src="{{ post.author.profile_picture.url }}" alt="{{ post.author.username }}'s profile picture">
                 <h2>Personal info</h2>
                 <p>First name: {{ user.first_name }}</p>
                 <p>Last name: {{ user.last_name }}</p>
                 <p>Email: {{ user.email }}</p>
                 <p>Gender: {{ user.gender }}</p>
-            </div>
-            <div>
-                <h2>Followers:</h2>
-                {% if object.followers.all %}
-                    <ul>
-                        {% for follower in object.followers.all %}
-                            <li>{{ follower.follower_user.username }}</li>
-                        {% endfor %}
-                    </ul>
-                {% else %}
-                    <p>No followers yet.</p>
-                {% endif %}
-
-                <h2>Following:</h2>
-                {% if object.following.all %}
-                    <ul>
-                        {% for followed_user in following %}
-                            <li>{{ followed_user.followed_user }}</li>
-                        {% endfor %}
-                    </ul>
-                {% else %}
-                    <p>Not following anyone yet.</p>
-                {% endif %}
             </div>
             <div>
                 <h2>{{ user.username }}'s posts</h2>

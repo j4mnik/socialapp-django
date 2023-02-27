@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Social app{% endblock %}
+
+{% block extra_style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/social/followed_users.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="follow-page">
+        <div class="section">
+            <div class="section-title">
+                <h1>Followed users by {{ user.username }}</h1>
+            </div>
+            <div>
+               {% for followed_user in followed_users %}
+                    <div class="follower">
+                <a href="{% url 'profile' followed_user.followed_user.id %}">
+                            <h3>{{ followed_user.followed_user.username }}</h3>
+                        </a>
+                    </div>
+                {% empty %}
+                    <li>No followed users.</li>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

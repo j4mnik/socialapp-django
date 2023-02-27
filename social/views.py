@@ -158,6 +158,42 @@ class FindFriendsView(LoginRequiredMixin, FormMixin, ListView):
         return super().form_valid(form)
 
 
+class FollowersListView(ListView):
+    model = Follower
+    template_name = 'social/follower_users.html'
+    context_object_name = 'followers'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user_id = self.kwargs['user_id']
+        user = User.objects.get(id=user_id)
+        context['user'] = user
+        return context
+
+    def get_queryset(self):
+        user_id = self.kwargs['user_id']
+        user = User.objects.get(id=user_id)
+        return Follower.objects.filter(followed_user=user)
+
+
+class FollowedUsersListView(ListView):
+    model = Follower
+    template_name = 'social/followed_users.html'
+    context_object_name = 'followed_users'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user_id = self.kwargs['user_id']
+        user = User.objects.get(id=user_id)
+        context['user'] = user
+        return context
+
+    def get_queryset(self):
+        user_id = self.kwargs['user_id']
+        user = User.objects.get(id=user_id)
+        return Follower.objects.filter(follower_user=user)
+
+
 @login_required
 def follow_user(request, user_id):
     user_to_follow = get_object_or_404(User, id=user_id)

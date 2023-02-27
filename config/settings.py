@@ -133,9 +133,9 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_DIR = BASE_DIR / "static"
 DEFAULT_AVATAR_DIR = STATIC_DIR / "profile_pictures" / "default_avatar.png"
 IMAGES_DIR = STATIC_DIR / "profile_pictures"
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
-MEDIA_URL = 'media/'
 STATICFILES_DIRS = [
     STATIC_DIR,
 ]

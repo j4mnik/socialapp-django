@@ -45,7 +45,7 @@
                     <p>{{ post.liked_by.count }} Likes</p>
                 </div>
             </div>
-            <div>
+            <div class="like-btn-section">
                 {% if user.is_authenticated %}
                     {% if liked %}
                         <form action="{% url 'post_unlike' post.pk %}" method="post">
