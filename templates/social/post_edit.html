@@ -28,11 +28,11 @@
                     <div class="group-section" id="picture-section">
                         {{ form.picture.label_tag }}
                         {% if form.picture.value %}
-                            <img src="{{ form.picture.value.url }}" class="img-thumbnail" alt="Post Picture">
+                            <img src="{{ form.picture.value.url }}" alt="Post picture">
                         {% endif %}
                         {{ form.picture }}
                     </div>
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <button type="submit">Save Changes</button>
                 </form>
             </div>
         </div>

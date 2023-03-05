@@ -137,6 +137,25 @@ class ProfileView(LoginRequiredMixin, DetailView):
         return context
 
 
+class EditProfileView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = User
+    fields = ['first_name', 'last_name', 'email', 'gender', 'date_of_birth', 'profile_picture']
+    template_name = 'social/edit_profile.html'
+    success_url = reverse_lazy("home")
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        self.object.save()
+        return response
+
+    def test_func(self):
+        user = self.get_object()
+        return self.request.user == user
+
+
 class FindFriendsView(LoginRequiredMixin, FormMixin, ListView):
     model = User
     template_name = "social/find_friends.html"

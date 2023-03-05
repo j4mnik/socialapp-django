@@ -30,3 +30,4 @@ class CommentForm(forms.ModelForm):
 
 class FollowForm(forms.Form):
     followed_user = forms.ModelChoiceField(queryset=User.objects.all(), widget=forms.HiddenInput())
+

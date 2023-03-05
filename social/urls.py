@@ -2,7 +2,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
 from social.views import FeedView, PostCreateView, PostDetailView, PostUpdateView, PostDeleteView, post_like, \
-    post_unlike, ProfileView, FindFriendsView, follow_user, unfollow_user, FollowedUsersListView, FollowersListView
+    post_unlike, ProfileView, EditProfileView, FindFriendsView, follow_user, unfollow_user, FollowedUsersListView, \
+    FollowersListView
 
 urlpatterns = [
     path("", FeedView.as_view(), name="home"),
@@ -13,6 +14,7 @@ urlpatterns = [
     path("post/<int:pk>/edit/", PostUpdateView.as_view(), name="post_edit"),
     path("post/<int:pk>/delete/", PostDeleteView.as_view(), name="post_delete"),
     path("profile/<int:pk>/", ProfileView.as_view(), name="profile"),
+    path('edit-profile/', EditProfileView.as_view(), name='edit_profile'),
     path('user/<int:user_id>/followers/', FollowersListView.as_view(), name='followers'),
     path('user/<int:user_id>/followed_users/', FollowedUsersListView.as_view(), name='followed_users'),
     path('find-friends/', FindFriendsView.as_view(), name='find_friends'),

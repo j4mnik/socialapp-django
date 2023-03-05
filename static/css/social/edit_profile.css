@@ -1,0 +1,33 @@
+@import url("base_social.css");
+
+.edit-profile-page {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 2rem 0;
+    width: 100%;
+}
+
+.edit-profile-form * {
+    display: flex;
+    flex-direction: column;
+    align-self: start;
+}
+
+.edit-profile-form p {
+    margin-top: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+input {
+    padding: 0.5rem;
+}
+
+select {
+    border: 0;
+    border-radius: 8px;
+    font-size: medium;
+    padding: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
