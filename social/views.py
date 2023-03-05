@@ -5,7 +5,7 @@ from django.views.generic.edit import View, UpdateView, DeleteView, FormMixin
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from social.forms import PostCreateForm, CommentForm, FollowForm
+from social.forms import PostCreateForm, CommentForm, FollowForm, PostUpdateForm
 from social.models import Post, Follower
 from accounts.models import User
 
@@ -79,6 +79,7 @@ class PostCreateView(LoginRequiredMixin, View):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
+            form.save_m2m()
             redirect_url = reverse('post_detail', kwargs={'pk': post.pk})
             return redirect(redirect_url)
         return render(request, self.template_name, {'form': form})
@@ -86,7 +87,7 @@ class PostCreateView(LoginRequiredMixin, View):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['title', 'text', 'picture']
+    form_class = PostUpdateForm
     template_name = 'social/post_edit.html'
 
     def get_success_url(self):
@@ -94,6 +95,9 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
+        picture = form.cleaned_data.get('picture')
+        if picture:
+            form.instance.picture = picture
         return super().form_valid(form)
 
     def test_func(self):

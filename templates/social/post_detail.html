@@ -24,7 +24,7 @@
                 <div class="post-card-info">
                     <div class="author-post-sect">
                         <img class="post-author-picture"
-                             src="{% static post.author.profile_picture %}">
+                             src="{{ post.author.profile_picture.url }}">
                         <p class="post-author"><a href="/profile/{{ post.author.id }}/">{{ post.author.username }}</a>
                         </p>
                     </div>
@@ -35,10 +35,10 @@
                 <div>
                     <p id="post-title">{{ post.title }}</p>
                 </div>
-                <div>
+                <div id="post-content">
                     <p class="post-text">{{ post.text }}</p>
                     {% if post.picture %}
-                        <img class="post_img" src="{{ post.picture }}" alt="image">
+                        <img class="post-img" src="{{ post.picture.url }}" alt="image">
                     {% endif %}
                 </div>
                 <div class="post-card-amount">
@@ -73,8 +73,9 @@
                 {% for comment in post.comments.all %}
                     <div class="comment">
                         <div class="comment-author-section">
-                            <img src={{ comment.author.profile_picture.url }}/>
-                            <p>{{ comment.author }}</p>
+                            <img class="post-author-picture"
+                                 src="{{ comment.author.profile_picture.url }}">
+                            <p>{{ comment.author.username }}</p>
                         </div>
                         <p>{{ comment.date_posted }}</p>
                         <p class="comment-content">{{ comment.content }}</p>

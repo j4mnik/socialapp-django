@@ -18,4 +18,4 @@ urlpatterns = [
     path('find-friends/', FindFriendsView.as_view(), name='find_friends'),
     path('follow/<int:user_id>/', follow_user, name='follow'),
     path('unfollow/<int:user_id>/', unfollow_user, name='unfollow'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]

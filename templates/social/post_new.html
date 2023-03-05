@@ -15,13 +15,11 @@
                 <h1>Add new post</h1>
             </div>
             <div>
-                <form class="add-post-form" id="" method="post" action="#">
+                <form class="add-post-form" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form.title }}
                     {{ form.text }}
-                    <div class="add_image">
-                        {{ form.picture }}
-                    </div>
+                    {{ form.picture }}
                     <button type="submit" class="primary_btn" id="publish_btn" value="save">Publish</button>
                 </form>
             </div>

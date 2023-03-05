@@ -15,12 +15,25 @@
                 <h1>Edit your post</h1>
             </div>
             <div>
-               <form class="edit-post-card" action="" method="post">{% csrf_token %}
-                {{ form.title }}
-                {{ form.text }}
-                {{ form.image }}
-                <input type="submit" value="Update">
-            </form>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="group-section">
+                        {{ form.title.label_tag }}
+                        {{ form.title }}
+                    </div>
+                    <div class="group-section">
+                        {{ form.text.label_tag }}
+                        {{ form.text }}
+                    </div>
+                    <div class="group-section" id="picture-section">
+                        {{ form.picture.label_tag }}
+                        {% if form.picture.value %}
+                            <img src="{{ form.picture.value.url }}" class="img-thumbnail" alt="Post Picture">
+                        {% endif %}
+                        {{ form.picture }}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </form>
             </div>
         </div>
     </div>

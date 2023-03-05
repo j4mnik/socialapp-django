@@ -1,3 +1,5 @@
 .venv
 .idea
 db.sqlite3
+media/profile_pictures/uploaded_by_users/*
+media/post_pictures/*

@@ -12,6 +12,25 @@
     flex-direction: column;
 }
 
-.edit-post-card > input {
-    padding: 1rem;
+.group-section {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.group-section > img {
+    align-self: start;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+    max-width: 90%;
+    max-height: 26rem;
+}
+
+.title {
+    height: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+#picture-section {
+    align-items: start;
 }

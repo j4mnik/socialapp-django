@@ -17,9 +17,12 @@ initial-scale=1, shrink-to-fit=no">
         <div class="topbar">
             <h3><a id="site-title" href={% url 'home' %}>Social app</a></h3>
             <div class="top-bar-account">
-                <p class="top-bar-username"><a href="{% url 'profile' pk=request.user.id %}">{{ request.user.username }}</a></p>
-                <img class="post-author-picture"
-                    src="{{ user.profile_picture.url }}" alt="{{ user.username }}">
+                <p class="top-bar-username"><a
+                        href="{% url 'profile' pk=request.user.id %}">{{ request.user.username }}</a></p>
+                <div class="request-user-topbar-picture">
+                    <img
+                         src="{{ request.user.profile_picture.url }}" alt="{{ user.username }}">
+                </div>
             </div>
         </div>
     {% endif %}

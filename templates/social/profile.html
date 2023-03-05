@@ -11,6 +11,9 @@
 {% block content %}
     <div class="profile">
         <div class="section-title" id="username-section">
+            <div class="profile-picture">
+                <img src="{{ user.profile_picture.url }}"/>
+            </div>
             <h1 class="profile-username-heading">{{ user.username }}</h1>
             <div class="follow-profile-section">
                 <p><a href="{% url 'followers' user.id %}">{{ user.followers.count }} Followers</a></p>
@@ -34,7 +37,6 @@
         </div>
         <div class="section">
             <div>
-                   <img src="{{ post.author.profile_picture.url }}" alt="{{ post.author.username }}'s profile picture">
                 <h2>Personal info</h2>
                 <p>First name: {{ user.first_name }}</p>
                 <p>Last name: {{ user.last_name }}</p>
@@ -48,22 +50,25 @@
                         <div class="post-card">
                             <div class="post-card-info">
                                 <div class="author-post-sect">
-                                    <img class="post-author-picture"
-                                         src="{% static post.author.profile_picture %}">
+                                    <div class="post-author-picture">
+                                        <img
+                                                src="{{ post.author.profile_picture.url }}">
+                                    </div>
                                     <p class="post-author"><a
                                             href="/profile/{{ post.author.id }}/">{{ post.author.username }}</a></p>
                                 </div>
                                 <div>
                                     <p id="post-pub-date">{{ post.date_updated }}</p>
                                 </div>
+
                             </div>
                             <div>
                                 <p id="post-title">{{ post.title }}</p>
                             </div>
-                            <div>
+                            <div id="post-content">
                                 <p class="post-text">{{ post.text }}</p>
                                 {% if post.picture %}
-                                    <img class="post_img" src="{{ post.picture }}" alt="image">
+                                    <img class="post-img" src="{{ post.picture.url }}" alt="image">
                                 {% endif %}
                             </div>
                             <div class="post-card-amount">

@@ -33,15 +33,17 @@
     font-size: large;
     font-weight: 500;
     color: #374151;
+    align-items: center;
 }
 
+.post-author > a {
+    margin: 0;
+}
 
 .post-author-picture {
     width: 2rem;
     height: 2rem;
     border-radius: 100%;
-    margin-right: 0.5rem;
-
 }
 
 #post-pub-date {
@@ -77,6 +79,11 @@
     margin: 0.5rem 0.5rem 0.5rem 0.5rem;
 }
 
+#post-content {
+    display: flex;
+    flex-direction: column;
+}
+
 .post-text {
     margin-top: 1rem;
     color: #374151;
@@ -86,7 +93,7 @@
     align-self: center;
     margin-bottom: 1rem;
     border-radius: 1rem;
-    max-width: 100%;
+    max-width: 90%;
     max-height: 26rem;
 }
 
@@ -109,6 +116,11 @@
     display: flex;
     width: 10rem;
 }
+
+.comment-section {
+    margin-top: 4rem;
+}
+
 
 .add-comment-section {
     display: flex;
@@ -143,11 +155,11 @@
 .comment-author-section {
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .comment-author-section > p {
     margin: 0 0 0 0.5rem;
-    vertical-align: baseline;
 }
 
 .comment {
